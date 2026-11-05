@@ -1,1 +1,788 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vaishnavi Rajendran | Portfolio</title>
+    <meta
+      name="description"
+      content="Portfolio website for Vaishnavi Rajendran, a frontend and full stack developer focused on modern web experiences."
+    />
+    <style>
+      :root {
+        --bg: #0b1020;
+        --bg-soft: #111827;
+        --panel: rgba(17, 24, 39, 0.8);
+        --panel-alt: rgba(15, 23, 42, 0.9);
+        --card: rgba(30, 41, 59, 0.72);
+        --line: rgba(148, 163, 184, 0.18);
+        --text: #e5eefc;
+        --muted: #a5b4cf;
+        --accent: #7c3aed;
+        --accent-2: #22d3ee;
+        --accent-3: #34d399;
+        --shadow: 0 20px 60px rgba(124, 58, 237, 0.22);
+      }
 
+      * { box-sizing: border-box; }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        margin: 0;
+        font-family: Inter, "Segoe UI", sans-serif;
+        background:
+          radial-gradient(circle at top left, rgba(124, 58, 237, 0.2), transparent 28%),
+          radial-gradient(circle at bottom right, rgba(34, 211, 238, 0.18), transparent 30%),
+          var(--bg);
+        color: var(--text);
+        line-height: 1.6;
+      }
+
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+
+      img {
+        max-width: 100%;
+        display: block;
+      }
+
+      .container {
+        width: min(1120px, calc(100% - 2rem));
+        margin: 0 auto;
+      }
+
+      .topbar {
+        position: sticky;
+        top: 0;
+        z-index: 20;
+        backdrop-filter: blur(12px);
+        background: rgba(11, 16, 32, 0.7);
+        border-bottom: 1px solid var(--line);
+      }
+
+      .nav {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        min-height: 74px;
+      }
+
+      .brand {
+        display: flex;
+        align-items: center;
+        gap: 0.9rem;
+        font-weight: 700;
+        letter-spacing: 0.04em;
+      }
+
+      .brand-mark {
+        width: 38px;
+        height: 38px;
+        border-radius: 12px;
+        display: grid;
+        place-items: center;
+        background: linear-gradient(135deg, var(--accent), var(--accent-2));
+        box-shadow: var(--shadow);
+        font-size: 1.1rem;
+      }
+
+      .nav-links {
+        display: flex;
+        align-items: center;
+        gap: 1.6rem;
+        color: var(--muted);
+        font-size: 0.96rem;
+      }
+
+      .nav-links a {
+        transition: color 0.2s ease;
+      }
+
+      .nav-links a:hover,
+      .nav-links a:focus-visible {
+        color: var(--text);
+      }
+
+      .button {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.6rem;
+        padding: 0.9rem 1.4rem;
+        border-radius: 999px;
+        border: 1px solid transparent;
+        font-weight: 700;
+        transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+      }
+
+      .button:hover,
+      .button:focus-visible {
+        transform: translateY(-1px);
+      }
+
+      .button.primary {
+        background: linear-gradient(135deg, var(--accent), var(--accent-2));
+        color: white;
+        box-shadow: var(--shadow);
+      }
+
+      .button.secondary {
+        border-color: rgba(255, 255, 255, 0.12);
+        background: rgba(255, 255, 255, 0.02);
+        color: var(--text);
+      }
+
+      section {
+        padding: 5.2rem 0;
+      }
+
+      .hero {
+        padding-top: 3.5rem;
+      }
+
+      .hero-wrap {
+        display: grid;
+        grid-template-columns: 1.2fr 0.8fr;
+        align-items: center;
+        gap: 2.5rem;
+      }
+
+      .eyebrow {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        padding: 0.5rem 0.8rem;
+        border-radius: 999px;
+        background: rgba(124, 58, 237, 0.12);
+        border: 1px solid rgba(124, 58, 237, 0.3);
+        color: #d5c8ff;
+        font-size: 0.8rem;
+        letter-spacing: 0.05em;
+        text-transform: uppercase;
+      }
+
+      h1 {
+        margin: 1.2rem 0 1rem;
+        font-size: clamp(2.7rem, 5vw, 5rem);
+        line-height: 1.01;
+        letter-spacing: -0.06em;
+      }
+
+      .highlight {
+        background: linear-gradient(135deg, #fff, #c4b5fd 35%, #7dd3fc 65%, #86efac);
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+      }
+
+      .lead {
+        max-width: 58ch;
+        font-size: 1.06rem;
+        color: var(--muted);
+      }
+
+      .cta-row {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 1rem;
+        margin-top: 1.8rem;
+      }
+
+      .mini-stats {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(120px, 1fr));
+        gap: 1rem;
+        margin-top: 2rem;
+      }
+
+      .stat {
+        padding: 1rem 1.1rem;
+        border-radius: 18px;
+        background: rgba(255, 255, 255, 0.03);
+        border: 1px solid var(--line);
+      }
+
+      .stat strong {
+        display: block;
+        font-size: 1.5rem;
+        margin-bottom: 0.2rem;
+      }
+
+      .stat span {
+        color: var(--muted);
+        font-size: 0.85rem;
+      }
+
+      .profile-card {
+        position: relative;
+        padding: 1rem;
+        border-radius: 28px;
+        background: linear-gradient(180deg, rgba(15, 23, 42, 0.96), rgba(17, 24, 39, 0.9));
+        border: 1px solid var(--line);
+        box-shadow: var(--shadow);
+      }
+
+      .avatar-frame {
+        border-radius: 24px;
+        overflow: hidden;
+        min-height: 460px;
+        background:
+          linear-gradient(145deg, rgba(124, 58, 237, 0.34), rgba(34, 211, 238, 0.22)),
+          linear-gradient(160deg, #0f172a, #111827);
+        border: 1px solid rgba(148, 163, 184, 0.2);
+        position: relative;
+      }
+
+      .avatar-frame::before {
+        content: "";
+        position: absolute;
+        inset: 12% 18% 14% 18%;
+        border-radius: 30% 30% 16% 16%;
+        background: linear-gradient(180deg, rgba(255,255,255,0.12), rgba(255,255,255,0.02));
+        border: 1px solid rgba(255,255,255,0.08);
+      }
+
+      .avatar-frame::after {
+        content: "VR";
+        position: absolute;
+        inset: 0;
+        display: grid;
+        place-items: center;
+        font-size: clamp(3rem, 6vw, 6rem);
+        font-weight: 800;
+        letter-spacing: -0.08em;
+        color: rgba(255,255,255,0.9);
+      }
+
+      .info-pills {
+        position: absolute;
+        left: 1.5rem;
+        right: 1.5rem;
+        bottom: 1.5rem;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.7rem;
+      }
+
+      .pill {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.45rem;
+        padding: 0.6rem 0.8rem;
+        background: rgba(15, 23, 42, 0.82);
+        border: 1px solid rgba(148, 163, 184, 0.15);
+        border-radius: 999px;
+        color: var(--text);
+        font-size: 0.82rem;
+      }
+
+      .section-head {
+        margin-bottom: 2rem;
+      }
+
+      .section-head h2 {
+        margin: 0.4rem 0 0;
+        font-size: clamp(2rem, 4vw, 3rem);
+        letter-spacing: -0.04em;
+      }
+
+      .section-head p {
+        margin: 0.75rem 0 0;
+        color: var(--muted);
+        max-width: 56ch;
+      }
+
+      .about-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 1.6rem;
+      }
+
+      .panel {
+        padding: 1.5rem;
+        background: var(--panel);
+        border: 1px solid var(--line);
+        border-radius: 22px;
+      }
+
+      .panel p {
+        margin: 0;
+        color: var(--muted);
+      }
+
+      .mini-list {
+        list-style: none;
+        padding: 0;
+        margin: 1.2rem 0 0;
+        display: grid;
+        gap: 0.8rem;
+      }
+
+      .mini-list li {
+        display: flex;
+        align-items: center;
+        gap: 0.7rem;
+        color: var(--text);
+      }
+
+      .mini-list li::before {
+        content: "•";
+        color: var(--accent-3);
+        font-size: 1.5rem;
+        line-height: 1;
+      }
+
+      .skills-grid,
+      .project-grid,
+      .timeline {
+        display: grid;
+        gap: 1.2rem;
+      }
+
+      .skills-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .skill-card,
+      .project-card,
+      .timeline-item,
+      .contact-card {
+        background: var(--card);
+        border: 1px solid var(--line);
+        border-radius: 22px;
+        padding: 1.4rem;
+      }
+
+      .skill-card h3,
+      .project-card h3,
+      .timeline-item h3 {
+        margin: 0 0 0.7rem;
+        font-size: 1.1rem;
+      }
+
+      .chip-row {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.75rem;
+        margin-top: 0.9rem;
+      }
+
+      .chip {
+        padding: 0.55rem 0.8rem;
+        border-radius: 999px;
+        background: rgba(34, 211, 238, 0.12);
+        border: 1px solid rgba(34, 211, 238, 0.18);
+        color: #d9f8ff;
+        font-size: 0.82rem;
+      }
+
+      .project-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+      }
+
+      .project-card {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+      }
+
+      .thumb {
+        min-height: 170px;
+        border-radius: 16px;
+        background: linear-gradient(135deg, rgba(124,58,237,0.4), rgba(34,211,238,0.18));
+        border: 1px solid rgba(148,163,184,0.18);
+      }
+
+      .project-card p {
+        margin: 0;
+        color: var(--muted);
+      }
+
+      .link-row {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-top: auto;
+        font-weight: 600;
+        color: #d7d8ff;
+      }
+
+      .timeline {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+      }
+
+      .timeline-item {
+        position: relative;
+      }
+
+      .timeline-item::before {
+        content: "";
+        width: 12px;
+        height: 12px;
+        border-radius: 50%;
+        background: linear-gradient(135deg, var(--accent), var(--accent-2));
+        position: absolute;
+        left: 1.4rem;
+        top: 1.2rem;
+        box-shadow: 0 0 0 6px rgba(124, 58, 237, 0.18);
+      }
+
+      .timeline-item .meta {
+        padding-left: 1.4rem;
+        color: #d5c8ff;
+        font-size: 0.8rem;
+        letter-spacing: 0.04em;
+        text-transform: uppercase;
+      }
+
+      .timeline-item ul {
+        margin: 1rem 0 0;
+        padding-left: 1.1rem;
+        color: var(--muted);
+      }
+
+      .contact-card {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 1rem;
+        padding: 1.7rem;
+      }
+
+      .contact-card h3 {
+        margin: 0 0 0.4rem;
+        font-size: clamp(1.4rem, 3vw, 2rem);
+      }
+
+      .contact-card p {
+        margin: 0;
+        color: var(--muted);
+      }
+
+      .socials {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.7rem;
+      }
+
+      .socials a {
+        padding: 0.7rem 0.9rem;
+        border: 1px solid var(--line);
+        border-radius: 999px;
+        color: var(--text);
+        background: rgba(255,255,255,0.02);
+      }
+
+      footer {
+        padding: 1.4rem 0 2rem;
+        color: var(--muted);
+        font-size: 0.94rem;
+      }
+
+      @media (max-width: 900px) {
+        .hero-wrap,
+        .about-grid,
+        .project-grid,
+        .timeline {
+          grid-template-columns: 1fr;
+        }
+
+        .nav-links {
+          display: none;
+        }
+      }
+
+      @media (max-width: 560px) {
+        section { padding: 4rem 0; }
+
+        .cta-row,
+        .contact-card,
+        .mini-stats {
+          grid-template-columns: 1fr;
+          display: grid;
+        }
+
+        .skills-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .contact-card {
+          justify-content: stretch;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header class="topbar">
+      <div class="container nav">
+        <a class="brand" href="#home" aria-label="Vaishnavi Rajendran homepage">
+          <span class="brand-mark">VR</span>
+          <span>Vaishnavi</span>
+        </a>
+
+        <nav class="nav-links" aria-label="Main navigation">
+          <a href="#about">About</a>
+          <a href="#skills">Skills</a>
+          <a href="#projects">Projects</a>
+          <a href="#experience">Experience</a>
+          <a href="#contact">Contact</a>
+        </nav>
+
+        <a class="button secondary" href="#contact">Let’s talk</a>
+      </div>
+    </header>
+
+    <main>
+      <section class="hero" id="home">
+        <div class="container hero-wrap">
+          <div>
+            <span class="eyebrow">Available for work</span>
+            <h1>
+              I build <span class="highlight">modern digital experiences</span>
+              that feel premium and perform beautifully.
+            </h1>
+            <p class="lead">
+              I’m Vaishnavi Rajendran, a developer passionate about crafting clean interfaces,
+              seamless user journeys, and resilient digital products that turn ideas into impact.
+            </p>
+
+            <div class="cta-row">
+              <a class="button primary" href="#projects">View projects</a>
+              <a class="button secondary" href="#contact">Hire me</a>
+            </div>
+
+            <div class="mini-stats" aria-label="Career highlights">
+              <div class="stat">
+                <strong>3+</strong>
+                <span>Years building</span>
+              </div>
+              <div class="stat">
+                <strong>12+</strong>
+                <span>Projects launched</span>
+              </div>
+              <div class="stat">
+                <strong>100%</strong>
+                <span>Creative focus</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="profile-card" aria-label="Profile card">
+            <div class="avatar-frame" role="img" aria-label="Portrait placeholder for Vaishnavi Rajendran"></div>
+            <div class="info-pills">
+              <span class="pill">Frontend</span>
+              <span class="pill">Full Stack</span>
+              <span class="pill">UI/UX</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="about">
+        <div class="container">
+          <div class="section-head">
+            <span class="eyebrow">About me</span>
+            <h2>Designing useful products with clarity and energy.</h2>
+          </div>
+
+          <div class="about-grid">
+            <div class="panel">
+              <p>
+                I enjoy transforming ambitious ideas into polished, user-centered interfaces that are easy to use,
+                fast to navigate, and built with strong engineering foundations. My approach blends product thinking,
+                clean code, and visual storytelling to solve real problems.
+              </p>
+            </div>
+
+            <div class="panel">
+              <ul class="mini-list">
+                <li>Focused on responsive, accessible, and scalable web experiences.</li>
+                <li>Comfortable across frontend, backend, and API integration work.</li>
+                <li>Enjoys collaborating with product, design, and engineering teams.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="skills">
+        <div class="container">
+          <div class="section-head">
+            <span class="eyebrow">Skills</span>
+            <h2>Tools and capabilities I work with.</h2>
+          </div>
+
+          <div class="skills-grid">
+            <div class="skill-card">
+              <h3>Frontend</h3>
+              <p>Building intuitive interfaces with performance in mind.</p>
+              <div class="chip-row">
+                <span class="chip">HTML5</span>
+                <span class="chip">CSS3</span>
+                <span class="chip">JavaScript</span>
+                <span class="chip">React</span>
+                <span class="chip">Responsive Design</span>
+              </div>
+            </div>
+
+            <div class="skill-card">
+              <h3>Backend</h3>
+              <p>Creating dependable APIs and data-driven application logic.</p>
+              <div class="chip-row">
+                <span class="chip">Node.js</span>
+                <span class="chip">Express</span>
+                <span class="chip">REST APIs</span>
+                <span class="chip">MongoDB</span>
+                <span class="chip">Authentication</span>
+              </div>
+            </div>
+
+            <div class="skill-card">
+              <h3>Design & UX</h3>
+              <p>Prioritizing usability and clarity in every interaction.</p>
+              <div class="chip-row">
+                <span class="chip">Figma</span>
+                <span class="chip">Wireframes</span>
+                <span class="chip">UI Systems</span>
+                <span class="chip">Accessibility</span>
+              </div>
+            </div>
+
+            <div class="skill-card">
+              <h3>Workflow</h3>
+              <p>Shipping features efficiently with modern development habits.</p>
+              <div class="chip-row">
+                <span class="chip">Git</span>
+                <span class="chip">GitHub</span>
+                <span class="chip">Agile</span>
+                <span class="chip">Testing</span>
+                <span class="chip">Deployment</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="projects">
+        <div class="container">
+          <div class="section-head">
+            <span class="eyebrow">Projects</span>
+            <h2>Selected work and product thinking.</h2>
+          </div>
+
+          <div class="project-grid">
+            <article class="project-card">
+              <div class="thumb" aria-hidden="true"></div>
+              <h3>Portfolio Platform</h3>
+              <p>
+                A polished personal brand site with a strong visual identity, effective story flow,
+                and a conversion-focused call to action.
+              </p>
+              <div class="link-row">
+                <span>UI / Frontend</span>
+                <a href="#contact">Explore →</a>
+              </div>
+            </article>
+
+            <article class="project-card">
+              <div class="thumb" aria-hidden="true"></div>
+              <h3>Business Dashboard</h3>
+              <p>
+                A data-rich admin dashboard built for actionable decision-making, KPI tracking,
+                and a clean operational workflow.
+              </p>
+              <div class="link-row">
+                <span>Product Design</span>
+                <a href="#contact">Explore →</a>
+              </div>
+            </article>
+
+            <article class="project-card">
+              <div class="thumb" aria-hidden="true"></div>
+              <h3>E-commerce Experience</h3>
+              <p>
+                A customer-focused storefront with responsive design principles, streamlined checkout,
+                and optimized product discovery.
+              </p>
+              <div class="link-row">
+                <span>Full Stack</span>
+                <a href="#contact">Explore →</a>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section id="experience">
+        <div class="container">
+          <div class="section-head">
+            <span class="eyebrow">Experience</span>
+            <h2>How I approach product development.</h2>
+          </div>
+
+          <div class="timeline">
+            <article class="timeline-item">
+              <div class="meta">01 / Discover</div>
+              <h3>Understand the user</h3>
+              <ul>
+                <li>Map user needs and pain points.</li>
+                <li>Align product value with business goals.</li>
+              </ul>
+            </article>
+
+            <article class="timeline-item">
+              <div class="meta">02 / Design</div>
+              <h3>Shape the experience</h3>
+              <ul>
+                <li>Prototype flows and interaction patterns.</li>
+                <li>Keep interfaces simple, useful, and cohesive.</li>
+              </ul>
+            </article>
+
+            <article class="timeline-item">
+              <div class="meta">03 / Build</div>
+              <h3>Ship with confidence</h3>
+              <ul>
+                <li>Implement scalable frontend and backend systems.</li>
+                <li>Measure impact and iterate based on feedback.</li>
+              </ul>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section id="contact">
+        <div class="container">
+          <div class="contact-card">
+            <div>
+              <span class="eyebrow">Contact</span>
+              <h3>Let’s build your next idea.</h3>
+              <p>Available for freelance, contract, and product collaborations.</p>
+            </div>
+
+            <div class="socials" aria-label="Social links">
+              <a href="mailto:vaishurp12@gmail.com">Email</a>
+              <a href="https://github.com/vaishnavi-rajendran-12" target="_blank" rel="noreferrer">GitHub</a>
+              <a href="https://www.linkedin.com" target="_blank" rel="noreferrer">LinkedIn</a>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <div class="container">
+        © <span id="year"></span> Vaishnavi Rajendran. All rights reserved.
+      </div>
+    </footer>
+
+    <script>
+      document.getElementById('year').textContent = new Date().getFullYear();
+    </script>
+  </body>
+</html>
